@@ -1,7 +1,46 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+store_open = [true, false]
+10.times do
+    name = Faker::Restaurant.name
+    address = Faker::Address.street_address
+    city = Faker::Address.city
+    state = Faker::Address.state
+    zip = Faker::Address.zip
+    phone_number = Faker::PhoneNumber.cell_phone
+
+    Store.create(
+        name: name, 
+        address: address,
+        city: city,
+        state: state,
+        zip: zip,
+        open: store_open.sample,
+        phone_number: phone_number
+    )
+
+end
+
+5.times do
+    user = User.create(Faker::Internet.user('username', 'email', 'password'))
+    5.times do
+        customer_name = Faker::Name.name
+        address = Faker::Address.street_address
+        city = Faker::Address.city
+        state = Faker::Address.state
+        zip = Faker::Address.zip
+        store_id = Store.all.sample.id
+
+        delivery = Delivery.create(
+            customer_name: customer_name,
+            address: address,
+            city: city,
+            state: state,
+            zip: zip,
+            store_id: store_id
+        )
+
+        user.deliveries << delivery
+    end
+
+end
+
+

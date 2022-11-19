@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
     # /login
     def create
+        binding.pry
     end
     # /logout
-    def delete
+    def destroy
+        binding.pry
     end
 end

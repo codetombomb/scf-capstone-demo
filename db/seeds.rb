@@ -1,3 +1,5 @@
+User.create(username: "tombomb", email: "tombomb@gmail.com", password: "tombomb")
+
 store_open = [true, false]
 10.times do
     name = Faker::Restaurant.name
@@ -19,6 +21,7 @@ store_open = [true, false]
 
 end
 
+
 5.times do
     user = User.create(Faker::Internet.user('username', 'email', 'password'))
     5.times do
@@ -39,6 +42,12 @@ end
         )
 
         user.deliveries << delivery
+        Order.create(
+            total_price: 12.00,
+            tip: 2.00,
+            payment_type: "Visa",
+            delivery_id: delivery.id
+        )
     end
 
 end

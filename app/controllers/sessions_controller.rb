@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   #/login
   def create
     # find a user by username
-    user = User.find_by(username: params[:username])
+    user = User.find_by(email: params[:email])
     # verify that the user is who they say they are by checking the password that they provided agianst the pw that is stored in the db
     if user && user.authenticate(params[:password])
       # set the session[:user_id] to the found and authorized user

@@ -1,0 +1,16 @@
+.login-form {
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form p {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1%;
+    padding: 1%;
+    width: 50%;
+    height: 3%;
+}

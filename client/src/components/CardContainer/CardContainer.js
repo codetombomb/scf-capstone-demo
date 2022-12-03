@@ -1,7 +1,11 @@
+import { useContext } from 'react'
+import { UserContext } from '../../context/UserProvider'
 import DeliveryCard from '../DeliveryCard/DeliveryCard'
 import './CardContainer.css'
 
-function CardContainer({deliveries}) {
+function CardContainer() {
+  const { deliveries } = useContext(UserContext)
+
   return (
     <div className='card-container'>
         {deliveries.map(delivery => {

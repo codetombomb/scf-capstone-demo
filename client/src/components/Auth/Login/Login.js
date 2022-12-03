@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../../context/UserProvider";
 
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import './Login.css'
 
-function Login({ handleUserLogin }) {
+function Login() {
+  const { onUserLogin } = useContext(UserContext)
   const [show, setShow] = useState("email");
   const [credentials, setCredentials] = useState({
     email: "",
@@ -16,14 +18,12 @@ function Login({ handleUserLogin }) {
   };
 
   const handleLoginSubmit = () => {
-    handleUserLogin(credentials);
+    onUserLogin(credentials);
   };
 
   const onInputChange = ({ target }) => {
-    console.log(target.value);
     const credentialsCopy = { ...credentials };
     credentialsCopy[target.name] = target.value;
-    console.log(credentialsCopy);
     setCredentials(credentialsCopy);
   };
 

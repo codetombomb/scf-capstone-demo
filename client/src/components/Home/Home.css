@@ -1,0 +1,5 @@
+.home {
+    /* height: ; */
+    display: grid;
+    place-items: center;
+}

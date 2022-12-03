@@ -1,7 +1,12 @@
+import CardContainer from '../CardContainer/CardContainer'
 import './Home.css'
-function Home({user}) {
+function Home({user, deliveries}) {
+  console.log(deliveries)
   return (
-    <div>Welcome {user.username}!</div>
+    <div className='home'>
+      <p>Welcome {user.username}!</p>
+      <CardContainer deliveries={deliveries}/>
+    </div>
   )
 }
 export default Home

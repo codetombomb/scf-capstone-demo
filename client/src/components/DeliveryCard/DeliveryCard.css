@@ -1,0 +1,8 @@
+.delivery-card{
+    width: 85%;
+    min-width: 150px;
+    height: 90%;
+    margin: 4%;
+    border: 1px solid greenyellow;
+    background-color: black;
+}

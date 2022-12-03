@@ -16,6 +16,10 @@ class UsersController < ApplicationController
         render json: users
     end
 
+    def show
+        render json: @current_user
+    end
+
     def create 
         # create var - save newly created instance using the user_params
         user = User.create!(user_params)

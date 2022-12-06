@@ -1,13 +1,26 @@
-import DeliveryCard from '../DeliveryCard/DeliveryCard'
-import './CardContainer.css'
+import DeliveryCard from "../DeliveryCard/DeliveryCard";
+import { v4 as uuidv4 } from "uuid";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
-function CardContainer({deliveries}) {
+import "./CardContainer.css";
+
+function CardContainer() {
+  const { deliveries } = useContext(UserContext)
   return (
-    <div className='card-container'>
-        {deliveries.map(delivery => {
-            return <DeliveryCard key={delivery.id} delivery={delivery}/>
-        })}
+    <div className="card-container">
+      {deliveries.map((delivery) => {
+        return (
+          <DeliveryCard
+            key={uuidv4()}
+            delivery={delivery}
+            customer={delivery.customer_name}
+            customerAddress={delivery.address}
+            orders={delivery.orders}
+          />
+        );
+      })}
     </div>
-  )
+  );
 }
-export default CardContainer
+export default CardContainer;

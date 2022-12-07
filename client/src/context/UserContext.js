@@ -42,6 +42,7 @@ const UserProvider = ({ children }) => {
       } else {
         resp.json().then(({ errors }) => {
           setErrors([...errors]);
+          setTimeout(() => setErrors([]), 3000)
         });
       }
     });

@@ -11,20 +11,20 @@ import { UserContext } from "./context/UserContext";
 import Button from "./components/Button/Button";
 
 function App() {
-  const { onUserLogin, errors } = useContext(UserContext);
-  console.log(errors)
+  const { onUserLogin, errors, user } = useContext(UserContext);
+  // console.log(errors)
 
   return (
     <div className="App">
       <Icon />
-      {errors.map((err) => <div>{err}</div>)}
+      {errors.map((err) => <div key={err}>{err}</div>)}
       {/* [{}, {}, {}] */}
       {/* {[<div key={1}>Hello 1</div>,<div key={2}>Hello 2</div>,<div>Hello 3</div> ]} */}
 
-      <Button
+      {user.username === "" ? null : <Button
         label="Logout"
         handler={() => fetch("/logout", { method: "DELETE" })}
-      />
+      />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

@@ -10,6 +10,11 @@ const UserProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
+  const handleErrors = (err) => {
+    setErrors([...err])
+    setTimeout(() => setErrors([]), 3000)
+  }
+
   const fetchDeliveries = () => {
     fetch("/deliveries").then((resp) => {
       if (resp.ok) {
@@ -18,7 +23,7 @@ const UserProvider = ({ children }) => {
         });
       } else {
         resp.json().then(({ errors }) => {
-          setErrors([...errors]);
+          handleErrors(errors);
         });
       }
     });
@@ -41,8 +46,7 @@ const UserProvider = ({ children }) => {
         });
       } else {
         resp.json().then(({ errors }) => {
-          setErrors([...errors]);
-          setTimeout(() => setErrors([]), 3000)
+          handleErrors(errors);
         });
       }
     });
@@ -57,7 +61,7 @@ const UserProvider = ({ children }) => {
         });
       } else {
         resp.json().then(({ errors }) => {
-          setErrors([...errors]);
+          handleErrors(errors)
           navigate("/login");
         });
       }

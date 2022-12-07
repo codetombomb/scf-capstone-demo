@@ -8,18 +8,25 @@ import Home from "./components/Home/Home";
 import "./App.css";
 import Icon from "./components/Icon/Icon";
 import { UserContext } from "./context/UserContext";
+import Button from "./components/Button/Button";
 
 function App() {
-  const { onUserLogin } = useContext(UserContext)
+  const { onUserLogin, errors } = useContext(UserContext);
+  console.log(errors)
 
   return (
     <div className="App">
       <Icon />
+      {errors.map((err) => <div>{err}</div>)}
+      {/* [{}, {}, {}] */}
+      {/* {[<div key={1}>Hello 1</div>,<div key={2}>Hello 2</div>,<div>Hello 3</div> ]} */}
+
+      <Button
+        label="Logout"
+        handler={() => fetch("/logout", { method: "DELETE" })}
+      />
       <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
+        <Route path="/" element={<Home />} />
         <Route
           path="/login"
           element={<Login handleUserLogin={onUserLogin} />}
